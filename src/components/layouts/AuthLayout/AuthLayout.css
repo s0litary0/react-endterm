@@ -1,0 +1,13 @@
+.auth-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-card {
+  width: 40rem;
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border-radius: 1rem;
+}

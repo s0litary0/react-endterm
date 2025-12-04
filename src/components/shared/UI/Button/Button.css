@@ -1,0 +1,17 @@
+.app-btn {
+  width: 20rem;
+  height: 4rem;
+  text-align: center;
+  background-color: var(--primary);
+  color: var(--text);
+  border: none;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: all ease-out 400ms;
+}
+
+.app-btn:hover {
+  background-color: var(--secondary);
+  cursor: pointer;
+}
