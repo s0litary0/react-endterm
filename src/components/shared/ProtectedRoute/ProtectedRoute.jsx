@@ -1,12 +1,13 @@
 import { useAuth } from '../../../hooks'
 import { Navigate } from 'react-router-dom'
+import Spinner from "../UI/Spinner/Spinner"
 
 
 export default function ProtectedRoute({ children }) {
   const { user, loggedIn, loading } = useAuth()
   
   if (loading) {
-    return <h1>Loading</h1>
+    return <Spinner />
   }
 
   if (!loggedIn) {

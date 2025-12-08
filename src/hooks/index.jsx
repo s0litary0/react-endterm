@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FavouritesService } from "../services/FavouritesService"
 import { addFavourite, fetchFavouritesByIds, removeFavourite, setFavourites } from '../store/favouritesSlice'
 import { addUserFavourite, mergeFavourites, onFavouritesChange, removeUserFavourite } from '../firebase/favouritesHelpers'
+import { doc, onSnapshot } from "firebase/firestore"
+import { firestore } from '../firebase/firebaseConfig'
 
 
 function useAuth() {
@@ -77,5 +79,38 @@ function useFavourites() {
   return { favourites, favouriteMovies, loading, toggleFavourite }
 }
 
-export { useAuth, useDebouncedValue, useFavourites }
+function useProfilePicture(uid) {
+  const [photo, setPhoto] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (!uid) {
+      setLoading(false)
+      return
+    }
+    const docRef = doc(firestore, "users", uid);
+
+    const unsub = onSnapshot(
+      docRef,
+      (snap) => {
+        if (snap.exists()) {
+          setPhoto(snap.data().photoBase64 || null);
+        } else {
+          setPhoto(null);
+        }
+        setLoading(false);
+      },
+      (err) => {
+        console.error("Failed to load user photo:", err);
+        setError(err);
+        setLoading(false);
+      }
+    )
+
+    return unsub
+  }, [uid])
+  return [ photo, loading ]
+}
+
+export { useAuth, useDebouncedValue, useFavourites, useProfilePicture }
 

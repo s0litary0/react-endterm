@@ -1,0 +1,31 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .signup-form__title {
+    text-align: center;
+    color: var(--text);
+  }
+  
+  .signup-form label {
+    font-weight: 500;
+    color: var(--text);
+  }
+  
+  .signup-form input {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: .5rem;
+  }
+  
+  .signup-form input:focus {
+    outline: 3px solid var(--highlight);
+  }
+  
+  .signup-form__btn {
+    height: 2rem;
+    width: 8rem;
+  }
+  

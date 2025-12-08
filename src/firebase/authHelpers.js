@@ -16,3 +16,11 @@ export function login(email, password) {
 export function logout() {
   return signOut(auth)
 }
+
+export async function createUserProfile(user) {
+  await setDoc(doc(db, "users", user.uid), {
+    email: user.email,
+    favourites: [],
+    photoURL: ""
+  });
+}

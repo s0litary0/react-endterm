@@ -1,0 +1,16 @@
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    width: 10rem;
+}
+
+.image-preview {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}

@@ -5,12 +5,18 @@ import {
   signInWithEmailAndPassword,
   signOut
 } from 'firebase/auth'
+import { setDoc } from 'firebase/firestore'
 
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, password }) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password)
+    await setDoc(doc(db, "users", user.uid), {
+      email: user.email,
+      favourites: [],
+      photoURL: ""
+    });
     return user
   }
 )
