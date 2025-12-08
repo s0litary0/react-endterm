@@ -1,0 +1,15 @@
+{
+  "name": "Endterm",
+  "short_name": "React endterm project",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1976d2",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/search.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

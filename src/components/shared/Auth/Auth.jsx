@@ -13,6 +13,11 @@ export default function Auth() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       console.log("User: ", user)
 
+      if (!user) {
+        dispatch(setCurrentUser(null))
+        return; 
+      }
+
       const docRef = doc(firestore, "users", user.uid)
       const snap = await getDoc(docRef)
     

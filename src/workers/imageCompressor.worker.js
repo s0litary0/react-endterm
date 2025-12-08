@@ -23,6 +23,9 @@ const compress = async (e) => {
     console.log("Worker got message")
     console.log("Worker: original KB =", prevSize / 1024);
     console.log("Worker: compressed KB =", compressedFile.size / 1024);
+    if (compressedFile.size > prevSize) {
+        self.postMessage(file)
+    }
     self.postMessage(compressedFile)
 }
 

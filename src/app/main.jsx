@@ -19,3 +19,16 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   // </StrictMode>,
 )
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./serviceWorkers/serviceWorker.js")
+      .then((registration) => {
+        console.log(`Service worker is registered: ${registration.scope}`);
+      })
+      .catch((err) => {
+        console.log(`Service worker is not installed: ${err}`);
+      });
+  });
+}
